@@ -1,5 +1,6 @@
 <div [formGroup]="form">
   <label [attr.for]="question.key">{{question.label}}</label>
+  <br>
 
   <div [ngSwitch]="question.controlType">
 
@@ -10,7 +11,15 @@
       <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
     </select>
 
+    <div *ngSwitchCase="'radio'">
+    <label *ngFor="let opt of question.options">
+      <input type="radio" [formControlName]="question.key" [value]="opt.key">
+      {{opt.value}}
+    </label>
   </div>
+  </div>
+
+
 
   <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
 </div>
