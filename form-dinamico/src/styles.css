@@ -43,7 +43,7 @@ button {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
-button:hover {
+button:enabled {
   background-color: black;
   color: white;
 }
@@ -82,9 +82,12 @@ input[type="text"] {
   padding: .5rem;
 }
 
+.question-wrapper {
+  margin-bottom: 20px; 
+}
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 5px; 
+}

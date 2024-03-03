@@ -8,7 +8,6 @@ import { of } from 'rxjs';
 
 @Injectable()
 export class QuestionService {
-  // TODO: get from a remote source of question metadata
   getQuestions() {
     const questions: QuestionBase<string>[] = [
       new DropdownQuestion({
@@ -28,7 +27,6 @@ export class QuestionService {
         key: 'firstName',
         label: 'First name',
         type: 'name',
-        value: 'Bombasto',
         required: true,
         order: 1,
       }),
@@ -41,13 +39,6 @@ export class QuestionService {
         order: 2,
       }),
 
-      // new TextboxQuestion({
-      //     key: 'planet',
-      //     label: 'Planet',
-      //     type: 'planet',
-      //     order: 3,
-      //   }),
-      // ];
 
       new RadioQuestion({
         key: 'planet',
@@ -55,11 +46,11 @@ export class QuestionService {
         required: true,
         order: 3,
         controlType: 'radio',
-        type: 'radio', // Se necessário, dependendo da implementação
+        type: 'radio', 
         options: [
           { key: 'terra66', value: 'Terra 66' },
           { key: 'mercurio74', value: 'Mercurio 74' },
-          { key: 'other', value: 'Other' },
+          { key: 'outro', value: 'outro' },
         ],
       }),
     ];
