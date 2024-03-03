@@ -1,13 +1,43 @@
+// import { Component } from '@angular/core';
+// import { RouterOutlet } from '@angular/router';
+
+// @Component({
+//   selector: 'app-root',
+//   standalone: true,
+//   imports: [RouterOutlet],
+//   templateUrl: './app.component.html',
+//   styleUrl: './app.component.css'
+// })
+// export class AppComponent {
+//   title = 'form-dinamico';
+// }
+
+
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+
+import { DynamicFormComponent } from './dynamic-form.component';
+
+import { QuestionService } from './question.service';
+import { QuestionBase } from './question-base';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-root',
+  template: `
+    <div>
+      <h2>Job Application for Heroes</h2>
+      <app-dynamic-form [questions]="questions$ | async"></app-dynamic-form>
+    </div>
+  `,
+  providers: [QuestionService],
+  imports: [AsyncPipe, DynamicFormComponent],
 })
 export class AppComponent {
-  title = 'form-dinamico';
+  questions$: Observable<QuestionBase<any>[]>;
+
+  constructor(service: QuestionService) {
+    this.questions$ = service.getQuestions();
+  }
 }
